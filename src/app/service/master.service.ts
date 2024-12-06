@@ -7,8 +7,8 @@ import {APIResponceModel} from '../Model/product';
   providedIn: 'root'
 })
 export class MasterService {
-  apiUrl = 'https://freeapi.miniprojectideas.com/api/BigBasket';
 
+  readonly apiUrl: string =  'https://freeapi.miniprojectideas.com/api/BigBasket/';
   constructor(private http: HttpClient) { }
 
   getAllProducts():Observable<APIResponceModel> {
