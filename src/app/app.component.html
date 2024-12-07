@@ -1,0 +1,24 @@
+<div class="main">
+<header>
+  <h1>Seller Portal</h1>
+  <nav>
+    <a *ngIf="!isLoggedIn" routerLink="/seller/signup" routerLinkActive="active">Signup</a>
+
+    <a *ngIf="!isLoggedIn" routerLink="/seller/login" routerLinkActive="active">Login</a>
+    <span *ngIf="isLoggedIn">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/add-product" routerLinkActive="active">Add Product</a>
+    <a routerLink="/view-product" routerLinkActive="active">View Products</a>
+      <button (click)="logout()">Logout</button>
+
+ </span>
+<br>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+
+</div>
