@@ -1,0 +1,33 @@
+<div class="signup-container">
+  <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+
+    <label for="username">Username:</label>
+    <input id="username" formControlName="name" type="text" />
+    <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
+      <small *ngIf="signupForm.get('name')?.errors?.['required']">Username is required.</small>
+    </div>
+
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" type="email" />
+    <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+      <small *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</small>
+      <small *ngIf="signupForm.get('email')?.errors?.['email']">Invalid email format.</small>
+    </div>
+
+    <label for="password">Password:</label>
+    <input id="password" formControlName="password" type="password" />
+    <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+      <small *ngIf="signupForm.get('password')?.errors?.['required']">Password is required.</small>
+      <small *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+    </div>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input id="confirmPassword" formControlName="confirmPassword" type="password" />
+    <div *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">
+      <small *ngIf="signupForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</small>
+      <small *ngIf="signupForm.hasError('passwordMismatch')">Passwords do not match.</small>
+    </div>
+
+    <button class="signupButton" type="submit" [disabled]="signupForm.invalid">Signup</button>
+  </form>
+</div>
