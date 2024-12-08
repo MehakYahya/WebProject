@@ -1,0 +1,50 @@
+<div class="add-product-container">
+  <h1>Welcome to the Seller Dashboard</h1>
+
+  <h2>Add a Product</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onAddProduct()">
+    <label for="name">Product Name:</label>
+    <input id="name" formControlName="name" type="text" />
+    <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+      <small>Product name is required.</small>
+    </div>
+    <label for="price">Price (Rs):</label>
+    <div class="price-input-container">
+      <input id="price" formControlName="price" type="text" />
+    </div>
+
+    <!-- Validation message -->
+    <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+      <small *ngIf="productForm.get('price')?.hasError('required')">Price is required.</small>
+      <small *ngIf="productForm.get('price')?.hasError('pattern')">Price must be a valid number.</small>
+    </div>
+    <!-- Product Description -->
+    <label for="description">Product Description:</label>
+    <textarea id="description" formControlName="description" rows="4" placeholder="Enter product description"></textarea>
+    <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched">
+      <small>Product description is required.</small>
+    </div>
+
+    <label for="quantity">Quantity:</label>
+    <input id="quantity" formControlName="quantity" type="number" min="1" step="1" />
+    <div *ngIf="productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched">
+      <small *ngIf="productForm.get('quantity')?.hasError('required')">Quantity is required.</small>
+      <small *ngIf="productForm.get('quantity')?.hasError('pattern')">Quantity must be a valid number.</small>
+    </div>
+
+    <label for="image">Product Image:</label>
+    <input id="image" type="file" (change)="onImageSelected($event)" />
+    <div *ngIf="productForm.get('image')?.invalid && productForm.get('image')?.touched">
+      <small>Product image is required.</small>
+    </div>
+
+    <!-- Image Preview Section -->
+    <div *ngIf="imagePreview">
+      <h3>Image Preview:</h3>
+      <img [src]="imagePreview" alt="Product Image" class="product-image-preview" />
+    </div>
+
+
+    <button type="submit" [disabled]="productForm.invalid">Add Product</button>
+  </form>
+</div>
