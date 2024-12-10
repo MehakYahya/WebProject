@@ -1,1 +1,6 @@
-<p>manage-customers works!</p>
+<h2>Manage Customers</h2>
+<ul>
+  <li *ngFor="let customer of customers">
+    {{ customer.name }} - {{ customer.email }}
+  </li>
+</ul>

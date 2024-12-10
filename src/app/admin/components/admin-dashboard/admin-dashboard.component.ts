@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import {RouterLink, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [],
   templateUrl: './admin-dashboard.component.html',
-  styleUrl: './admin-dashboard.component.css'
+  styleUrls: ['./admin-dashboard.component.css'],
+  imports: [RouterLink, RouterOutlet],
 })
-export class AdminDashboardComponent {
-
-}
+export class AdminDashboardComponent {}

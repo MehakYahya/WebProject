@@ -1,1 +1,8 @@
-<p>manage-sellers works!</p>
+<h2>Manage Sellers</h2>
+<ul>
+  <li *ngFor="let seller of sellers">
+    {{ seller.name }}
+    <button (click)="approveSeller(seller.id)">Approve</button>
+    <button (click)="rejectSeller(seller.id)">Reject</button>
+  </li>
+</ul>
