@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 export class SellerService {
   private apiBase = '/api/sellers';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getAllSellers() {
     return this.http.get<any[]>(`${this.apiBase}`);
@@ -20,4 +21,5 @@ export class SellerService {
   rejectSeller(id: string) {
     return this.http.post(`${this.apiBase}/${id}/reject`, {});
   }
+
 }
