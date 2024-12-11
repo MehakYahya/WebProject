@@ -30,8 +30,6 @@ export class SellerSignupComponent {
       validators: this.passwordMatchValidator
     });
   }
-
-  // Custom validator to check if passwords match
   passwordMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
@@ -43,19 +41,14 @@ export class SellerSignupComponent {
       const {name, email, password} = this.signupForm.value;
 
       try {
-        // Call AuthService signup method
         const response = this.authService.signup({name, email, password});
-
-        // Show success alert
         alert(response.message);
 
-        // Navigate to login page
         this.router.navigate(['/seller/login']).then(() => {
-          // Optionally handle after navigation, if needed
         });
-      } catch (error: any) { // Assert error as 'any'
-        console.error('Signup error:', error); // Use error directly, no need to use .message for 'any'
-        alert(error?.message || 'Signup failed. Please try again later.'); // Provide fallback error message
+      } catch (error: any) {
+        console.error('Signup error:', error);
+        alert(error?.message || 'Signup failed. Please try again later.');
       }
     } else {
       alert('Please fill out the form correctly.');

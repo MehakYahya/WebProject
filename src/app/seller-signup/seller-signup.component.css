@@ -1,0 +1,103 @@
+/* Basic styling for the form container */
+.signup-container {
+  max-width: 400px; /* Set the maximum width of the form */
+  width: 550px; /* Ensures responsiveness for smaller screens */
+  margin-top: 20px ;
+
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+input {
+  width: calc(100% - 10px); /* Adjusted width to account for padding or borders */
+  padding: 10px 5px; /* Adjusted padding for balanced spacing inside the input */
+  margin: 0 auto 15px; /* Centered input with equal left and right spacing */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+  outline: none;
+}
+
+small {
+  color: #c15a12;
+  font-size: 12px;
+  padding-top: 0;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:disabled {
+  background-color: #2980b9;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: scale(1.02);
+}
+
+/* Centering the form */
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(to right, #b6b6ec, #d1c4e9);
+  box-sizing: border-box;
+}
+
+.signup-container form {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 15px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input,
+  button {
+    font-size: 14px;
+  }
+}
+p{
+  color: #c15a12;
+}
