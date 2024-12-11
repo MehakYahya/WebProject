@@ -1,0 +1,75 @@
+/* Main container for products */
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto; /* Combined margin: center the product items horizontally and set a vertical margin */
+  background-color: #bf9dff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  width: 250px; /* Set a fixed width for the product card */
+}
+
+.product-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for product images */
+.product-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover; /* Maintain aspect ratio of the image */
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Styling for product names and prices */
+.product-item p {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* If no products are found */
+.no-products {
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+/* Heading styling */
+h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-top: 30px;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .product-item {
+    width: 100%; /* Allow the product card to take full width on smaller screens */
+    padding: 15px;
+  }
+
+  .product-image {
+    width: 150px; /* Adjust image size on small screens */
+    height: 150px;
+  }
+
+  .product-item p {
+    font-size: 16px; /* Smaller text on small screens */
+  }
+}
