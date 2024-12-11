@@ -1,0 +1,78 @@
+/* General Styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #b6b6ec, #5a00ff);
+  color: #333;
+}
+
+/* Main Layout */
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, #5a5ae4, #bf9dff);
+}
+
+/* Header */
+header {
+  background-color: #021c3e;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+nav {
+  margin-top: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #007bff;
+  margin: 0 15px;
+  font-size: 18px;
+}
+
+nav a:hover {
+  color: #0056b3;
+}
+nav .active {
+  font-weight: bold;
+  color: #b3a318;
+}
+
+button {
+  background-color: #099134;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 20px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #c9302c;
+}
+
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+
