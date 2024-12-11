@@ -12,6 +12,7 @@ import { NgIf } from '@angular/common';
   imports: [ReactiveFormsModule, NgIf]
 })
 export class SellerLoginComponent {
+
   loginForm: FormGroup;
 
   constructor(
@@ -42,9 +43,4 @@ export class SellerLoginComponent {
     }
   }
 
-  onLogout() {
-    this.authService.logout();
-    this.router.navigate(['/seller/login']).then(() => {
-    });
-  }
 }
