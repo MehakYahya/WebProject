@@ -7,6 +7,7 @@
     </div>
 
     <div *ngFor="let order of (showAllPendingOrders ? pendingOrders : pendingOrders.slice(0, 5))" class="order-card">
+
       <p>Order #{{ order.orderNumber }}</p>
       <p>Customer: {{ order.customer }}</p>
       <p>Product: {{ order.product }}</p>
@@ -20,7 +21,6 @@
     </div>
   </div>
 
-  <!-- Unpaid Orders Section -->
   <div class="order-section">
     <h2>Unpaid Orders</h2>
     <div *ngIf="unpaidOrders.length === 0">
