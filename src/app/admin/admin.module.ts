@@ -7,16 +7,15 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ManageSellersComponent } from './components/manage-sellers/manage-sellers.component';
 import { ManageCustomersComponent } from './components/manage-customers/manage-customers.component';
-import { SupportTicketsComponent } from './components/support-tickets/support-tickets.component';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AuthService } from './services/auth.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { SellerService } from './services/seller.service';
 import { CustomerService } from './services/customer.service';
-import { SupportService } from './services/support.service';
 
 @NgModule({
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,7 +24,6 @@ import { SupportService } from './services/support.service';
     AdminDashboardComponent,
     ManageSellersComponent,
     ManageCustomersComponent,
-    SupportTicketsComponent,
   ],
   providers: [
     provideHttpClient(),
@@ -33,7 +31,6 @@ import { SupportService } from './services/support.service';
     AdminAuthGuardService,
     SellerService,
     CustomerService,
-    SupportService, // Added SupportService
   ],
 })
 export class AdminModule {}
