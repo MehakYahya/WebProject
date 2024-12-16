@@ -7,6 +7,7 @@ import { NgForOf } from '@angular/common';
   templateUrl: './manage-customers.component.html',
   styleUrls: ['./manage-customers.component.css'],
   imports: [NgForOf],
+  standalone: true
 })
 export class ManageCustomersComponent implements OnInit {
   customers: any[] = [];

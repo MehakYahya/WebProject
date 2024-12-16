@@ -6,5 +6,6 @@ import {RouterLink, RouterOutlet} from '@angular/router';
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css'],
   imports: [RouterLink, RouterOutlet],
+  standalone: true
 })
 export class AdminDashboardComponent {}

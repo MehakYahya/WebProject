@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 class="text-center">Product List</h2>
+
+  <!-- Show products if available -->
+  <div *ngIf="products.length > 0; else noProducts">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Description</th>
+        <th>Image</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.description }}</td>
+        <td>
+          <img
+            [src]="product.image"
+            alt="{{ product.name }}"
+            width="50"
+            height="50"
+          />
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Template to show if no products exist -->
+  <ng-template #noProducts>
+    <p class="text-center text-warning">No products available!</p>
+  </ng-template>
+</div>

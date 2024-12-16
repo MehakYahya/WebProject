@@ -7,6 +7,7 @@ import { NgForOf } from '@angular/common';
   templateUrl: './manage-sellers.component.html',
   styleUrls: ['./manage-sellers.component.css'],
   imports: [NgForOf],
+  standalone: true
 })
 export class ManageSellersComponent implements OnInit {
   sellers: any[] = [];
