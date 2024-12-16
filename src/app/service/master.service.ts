@@ -14,4 +14,9 @@ export class MasterService {
   getAllProducts():Observable<APIResponceModel> {
     return this.http.get<APIResponceModel>(this.apiUrl+"GetAllProducts")
   }
+
+  getAllCategory():Observable<APIResponceModel> {
+    return this.http.get<APIResponceModel>(this.apiUrl+"GetAllCategory")
+  }
+
 }

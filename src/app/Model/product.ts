@@ -3,6 +3,12 @@ export interface APIResponceModel {
   "result": boolean,
   "data": any
 }
+export interface Category {
+  categoryId: number,
+  categoryName: string,
+  parentCategoryId: number,
+  userId: number
+}
 export interface ProductList {
   productId: number;
   productSku: string;
