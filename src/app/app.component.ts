@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import {FormsModule} from '@angular/forms';
 
-import {ProductsComponent} from './pages/products/products.component';
+import {ProductsComponent} from './Page/products/products.component';
 
 
 @Component({
