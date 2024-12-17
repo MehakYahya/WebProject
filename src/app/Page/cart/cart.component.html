@@ -1,0 +1,30 @@
+<div *ngIf="cartItems.length > 0; else emptyCart">
+  <div *ngFor="let item of cartItems; let i = index">
+    <div class="cart-item">
+      <!-- Product Image -->
+      <img *ngIf="item.image" [src]="item.image" alt="{{ item.name }}" class="cart-item-image" />
+
+      <!-- Product Details -->
+      <h3>{{ item.name }}</h3>
+      <p><strong>Price:</strong> Rs{{ item.price }}</p>
+      <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+      <p><strong>Total:</strong> Rs{{ item.price * item.quantity }}</p>
+
+      <!-- Remove Button -->
+      <button (click)="removeFromCart(i)">Remove from Cart</button>
+    </div>
+    <hr />
+  </div>
+
+  <div class="cart-total">
+    <p><strong>Total Amount:</strong> Rs {{ getTotalAmount() }}</p>
+  </div>
+  <button (click)="continueShopping()">Continue Shopping</button>
+  <button (click)="proceedToPay()">Proceed to Pay</button>
+</div>
+
+<ng-template #emptyCart>
+  <p>Your cart is empty.</p>
+  <button (click)="continueShopping()">Continue Shopping</button>
+
+</ng-template>

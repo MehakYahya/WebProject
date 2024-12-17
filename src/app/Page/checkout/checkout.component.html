@@ -1,0 +1,27 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" type="text" />
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input id="address" formControlName="address" type="text" />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" type="email" />
+  </div>
+
+  <div class="form-group">
+    <label for="payment">Payment Info</label>
+    <input id="payment" formControlName="payment" type="text" placeholder="Enter card number" />
+  </div>
+  <div class="total-amount">
+    <p><strong>Total Amount:</strong> Rs {{ totalAmount }}</p>
+  </div>
+  <button type="submit" [disabled]="!paymentForm.valid">Submit Payment</button>
+  <button type="button" (click)="goBackToCart()">Back to Cart</button>
+
+</form>

@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <h2>Register</h2>
+  <form (ngSubmit)="registerUser()">
+    <div class="mb-2">
+      <input type="text" class="form-control" placeholder="Name" [(ngModel)]="name" name="name" required />
+    </div>
+    <div class="mb-2">
+      <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" name="password" required />
+    </div>
+    <div class="mb-2">
+      <input type="text" class="form-control" placeholder="Phone Number" [(ngModel)]="phone" name="phone" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
