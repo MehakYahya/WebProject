@@ -12,6 +12,9 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
+
+
+
 // In-memory stores
 const admins = {
   'admin@example.com': { password: bcrypt.hashSync('admin123', 10) },
