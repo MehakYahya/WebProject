@@ -1,34 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../../services/seller.service';
-import { NgForOf } from '@angular/common';
+import { CommonModule } from '@angular/common';
+
+interface Seller {
+  email: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-manage-sellers',
   templateUrl: './manage-sellers.component.html',
   styleUrls: ['./manage-sellers.component.css'],
-  imports: [NgForOf],
-  standalone: true
+  standalone: true,
+  imports: [CommonModule],
 })
 export class ManageSellersComponent implements OnInit {
-  sellers: any[] = [];
+  sellers: Seller[] = [];
 
   constructor(private sellerService: SellerService) {}
 
   ngOnInit() {
-    this.sellerService.getAllSellers().subscribe((data) => {
-      this.sellers = data;
+    this.sellerService.getPendingSellers().subscribe((response) => {
+      console.log('Pending Sellers API Response:', response);
+      this.sellers = response.pendingSellers || [];
     });
   }
 
-  approveSeller(id: string) {
-    this.sellerService.approveSeller(id).subscribe(() => {
-      this.sellers = this.sellers.filter((seller) => seller.id !== id);
-    });
-  }
-
-  rejectSeller(id: string) {
-    this.sellerService.rejectSeller(id).subscribe(() => {
-      this.sellers = this.sellers.filter((seller) => seller.id !== id);
+  approveSeller(email: string) {
+    this.sellerService.approveSeller(email).subscribe(() => {
+      this.sellers = this.sellers.filter((seller) => seller.email !== email);
     });
   }
 }

@@ -1,25 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
+interface PendingSeller {
+  email: string;
+  name: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class SellerService {
-  private apiBase = '/api/sellers';
+  private pendingSellersUrl = 'http://localhost:3000/admin/pending-sellers';
+  private approveSellerUrl = 'http://localhost:3000/admin/approve-seller';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
+
+  getPendingSellers(): Observable<{ pendingSellers: PendingSeller[] }> {
+    return this.http.get<{ pendingSellers: PendingSeller[] }>(this.pendingSellersUrl).pipe(
+      tap(data => console.log('API Response:', data))
+    );
   }
 
-  getAllSellers() {
-    return this.http.get<any[]>(`${this.apiBase}`);
+  approveSeller(email: string): Observable<void> {
+    return this.http.post<void>(this.approveSellerUrl, { email });
   }
-
-  approveSeller(id: string) {
-    return this.http.post(`${this.apiBase}/${id}/approve`, {});
-  }
-
-  rejectSeller(id: string) {
-    return this.http.post(`${this.apiBase}/${id}/reject`, {});
-  }
-
 }

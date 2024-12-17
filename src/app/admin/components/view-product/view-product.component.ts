@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService} from '../../services/product.service';// Import ProductService
-import {CurrencyPipe, NgForOf, NgIf} from '@angular/common';
+import {CurrencyPipe, NgForOf} from '@angular/common';
 
 interface Product {
   name: string;
@@ -14,7 +14,7 @@ interface Product {
   selector: 'app-view-product',
   templateUrl: './view-product.component.html',
   styleUrls: ['./view-product.component.css'],
-  imports: [NgForOf, NgIf, CurrencyPipe],
+  imports: [NgForOf, CurrencyPipe],
   standalone: true
 })
 export class ViewProductComponent implements OnInit {

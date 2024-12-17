@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 
 // In-memory stores
 const admins = {
-  'syedahira2846@gmail.com': { password: bcrypt.hashSync('admin123', 10) },
   'admin@example.com': { password: bcrypt.hashSync('admin123', 10) },
 };
 
@@ -53,6 +52,7 @@ app.get('/admin/pending-sellers', (req, res) => {
     .map(([email, details]) => ({ email, name: details.name }));
 
   return res.status(200).json({ pendingSellers });
+
 });
 
 // 3. Admin: Approve Seller

@@ -1,8 +1,9 @@
 <h2>Manage Sellers</h2>
 <ul>
   <li *ngFor="let seller of sellers">
-    {{ seller.name }}
-    <button (click)="approveSeller(seller.id)">Approve</button>
-    <button (click)="rejectSeller(seller.id)">Reject</button>
+
+
+    {{ seller.name }} ({{ seller.email }})
+    <button (click)="approveSeller(seller.email)">Approve</button>
   </li>
 </ul>
