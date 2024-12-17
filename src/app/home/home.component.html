@@ -1,53 +1,14 @@
-<div class="dashboard-container">
-  <h1>Seller Dashboard</h1>
-  <div class="order-section">
-    <h2>Pending Orders</h2>
-    <div *ngIf="pendingOrders.length === 0">
-      <p>No pending orders.</p>
+<div class="order-summary">
+  <h2>Order Summary</h2>
+  <div class="order-statistics">
+    <div class="stat-item total-orders">
+      <p>Total Orders: {{ totalOrders }}</p>
     </div>
-
-    <div *ngFor="let order of (showAllPendingOrders ? pendingOrders : pendingOrders.slice(0, 5))" class="order-card">
-
-      <p>Order #{{ order.orderNumber }}</p>
-      <p>Customer: {{ order.customer }}</p>
-      <p>Product: {{ order.product }}</p>
-      <button (click)="markAsUnpaid(order.orderNumber)">Mark as Unpaid</button>
-      <button (click)="markAsToBeReviewed(order.orderNumber)">Mark as To Be Reviewed</button>
+    <div class="stat-item delivered-orders">
+      <p>Delivered Orders: {{ deliveredOrders }}</p>
     </div>
-    <div *ngIf="pendingOrders.length > 5">
-      <button (click)="toggleSeeMore()">
-        {{ showAllPendingOrders ? 'See Less' : 'See More' }}
-      </button>
-    </div>
-  </div>
-
-  <div class="order-section">
-    <h2>Unpaid Orders</h2>
-    <div *ngIf="unpaidOrders.length === 0">
-      <p>No unpaid orders.</p>
-    </div>
-
-    <div *ngFor="let order of unpaidOrders" class="order-card">
-      <p>Order #{{ order.orderNumber }}</p>
-      <p>Customer: {{ order.customer }}</p>
-      <p>Product: {{ order.product }}</p>
-      <p>Status: Unpaid</p>
-      <button (click)="markAsToBeReviewed(order.orderNumber)">Mark as To Be Reviewed</button>
-    </div>
-  </div>
-
-  <!-- To Be Reviewed Orders Section -->
-  <div class="order-section">
-    <h2>To Be Reviewed Orders</h2>
-    <div *ngIf="toBeReviewedOrders.length === 0">
-      <p>No orders to review.</p>
-    </div>
-
-    <div *ngFor="let order of toBeReviewedOrders" class="order-card">
-      <p>Order #{{ order.orderNumber }}</p>
-      <p>Customer: {{ order.customer }}</p>
-      <p>Product: {{ order.product }}</p>
-      <p>Status: To Be Reviewed</p>
+    <div class="stat-item pending-orders">
+      <p>Pending Orders: {{ pendingOrders }}</p>
     </div>
   </div>
 </div>
