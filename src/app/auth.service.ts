@@ -1,38 +1,51 @@
+
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable, Observer} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private users: { [email: string]: { name: string; password: string } } = {};
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private apiUrl = 'http://localhost:3000'; // Replace with your server URL
 
-  constructor() {
+  constructor(private http: HttpClient) {
     const isAuthenticated = localStorage.getItem('authToken') !== null;
     this.loggedIn.next(isAuthenticated);
   }
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
-  signup(user: { name: string; email: string; password: string }): { message: string } {
-    if (this.users[user.email]) {
-      throw new Error('User already exists');
-    }
-    this.users[user.email] = { name: user.name, password: user.password };
-    return { message: 'Signup Successful!' };
+  signup(user: { name: string; email: string; password: string }): Promise<{ message: string }> {
+    return firstValueFrom(this.http.post<{ message: string }>(`${this.apiUrl}/seller/signup`, user));
   }
 
-
-  login(email: string, password: string): boolean {
-    const user = this.users[email];
-    if (user && user.password === password) {
-      localStorage.setItem('authToken', 'sample-token');
-      this.loggedIn.next(true);
-      return true;
-    }
-    return false;
+  login(email: string, password: string): Observable<boolean> {
+    return new Observable<boolean>((observer: Observer<boolean>) => {  // Specify Observer type here
+      this.http.post<any>(`${this.apiUrl}/seller/login`, { email, password }).subscribe(
+        (response) => {
+          if (response.message === 'Login successful.') {
+            localStorage.setItem('authToken', 'seller-token'); // Store token in localStorage
+            this.loggedIn.next(true); // Update login status
+            observer.next(true);
+          } else {
+            this.loggedIn.next(false); // Set login status to false
+            observer.next(false);
+          }
+          observer.complete();
+        },
+        (error) => {
+          console.error('Login failed:', error);
+          this.loggedIn.next(false); // Set login status to false on error
+          observer.next(false);
+          observer.complete();
+        }
+      );
+    });
   }
+
 
   isAuthenticated(): boolean {
     return this.loggedIn.value;  }
