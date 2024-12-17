@@ -1,7 +1,29 @@
 <h2>Manage Sellers</h2>
 <ul>
   <li *ngFor="let seller of sellers">
-    {{ seller.name }} ({{ seller.email }})
-    <button (click)="approveSeller(seller.email)">Approve</button>
+    <span>
+      {{ seller.name }} ({{ seller.email }})
+      <span *ngIf="seller.status" style="font-weight: bold; margin-left: 10px;">
+        -
+        <span [ngStyle]="{ color: seller.status === 'Approved' ? 'green' : 'red' }">
+          {{ seller.status }}
+        </span>
+      </span>
+    </span>
+
+    <button
+      (click)="approveSeller(seller.email)"
+      [disabled]="seller.status === 'Approved' || seller.status === 'Rejected'"
+    >
+      Approve
+    </button>
+
+    <button
+      (click)="rejectSeller(seller.email)"
+      style="color: #ff7979;"
+      [disabled]="seller.status === 'Approved' || seller.status === 'Rejected'"
+    >
+      Reject
+    </button>
   </li>
 </ul>
