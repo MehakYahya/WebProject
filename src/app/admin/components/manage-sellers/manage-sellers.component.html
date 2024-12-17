@@ -3,9 +3,9 @@
   <li *ngFor="let seller of sellers">
     <span>
       {{ seller.name }} ({{ seller.email }})
-      <span *ngIf="seller.status" style="font-weight: bold; margin-left: 10px;">
+      <span style="font-weight: bold; margin-left: 10px;">
         -
-        <span [ngStyle]="{ color: seller.status === 'Approved' ? 'green' : 'red' }">
+        <span [ngStyle]="{ color: getStatusColor(seller.status) }">
           {{ seller.status }}
         </span>
       </span>

@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../../services/seller.service';
 import { CommonModule } from '@angular/common';
 
-// Extended Seller Interface to include a status property
+// Extended Seller Interface
 interface Seller {
   email: string;
   name: string;
-  status?: 'Approved' | 'Rejected' | 'Pending'; // Optional property for status
+  status: 'Approved' | 'Rejected' | 'Pending'; // Status is mandatory
+
+
 }
 
 @Component({
@@ -22,31 +24,46 @@ export class ManageSellersComponent implements OnInit {
   constructor(private sellerService: SellerService) {}
 
   ngOnInit() {
-    // Initialize sellers' data with 'Pending' status
-    this.sellerService.getPendingSellers().subscribe((response) => {
-      console.log('Pending Sellers API Response:', response);
-      this.sellers = response.pendingSellers.map((seller) => ({
-        ...seller,
-        status: 'Pending', // Adding status property dynamically
-      }));
+    this.fetchSellersStatus();
+  }
+
+  // Fetch all sellers with their statuses
+  fetchSellersStatus() {
+    this.sellerService.getSellersWithStatus().subscribe((response) => {
+      console.log('Sellers API Response:', response);
+      this.sellers = response.sellers; // Assumes response contains all sellers with statuses
     });
   }
 
   approveSeller(email: string) {
     this.sellerService.approveSeller(email).subscribe(() => {
       console.log(`Seller ${email} approved.`);
-      this.sellers = this.sellers.map((seller) =>
-        seller.email === email ? { ...seller, status: 'Approved' } : seller
-      );
+      this.updateSellerStatus(email, 'Approved');
     });
   }
 
   rejectSeller(email: string) {
     this.sellerService.rejectSeller(email).subscribe(() => {
       console.log(`Seller ${email} rejected.`);
-      this.sellers = this.sellers.map((seller) =>
-        seller.email === email ? { ...seller, status: 'Rejected' } : seller
-      );
+      this.updateSellerStatus(email, 'Rejected');
     });
+  }
+  getStatusColor(status: 'Approved' | 'Rejected' | 'Pending'): string {
+    switch (status) {
+      case 'Approved':
+        return 'green';
+      case 'Rejected':
+        return 'red';
+      default:
+        return 'orange';
+    }
+  }
+
+
+  // Utility function to update the seller's status locally
+  private updateSellerStatus(email: string, newStatus: 'Approved' | 'Rejected') {
+    this.sellers = this.sellers.map((seller) =>
+      seller.email === email ? { ...seller, status: newStatus } : seller
+    );
   }
 }

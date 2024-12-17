@@ -72,7 +72,35 @@ app.post('/admin/approve-seller', (req, res) => {
   return res.status(200).json({ message: 'Seller approved successfully.' });
 });
 
-// 4. Admin: View All Products
+// 4. Admin: Reject Seller
+app.post('/admin/reject-seller', (req, res) => {
+  const { email } = req.body;
+
+  const seller = sellers[email];
+  if (!seller) {
+    return res.status(404).json({ message: 'Seller not found.' });
+  }
+
+  // Remove seller from the list
+  delete sellers[email];
+  return res.status(200).json({ message: 'Seller rejected successfully.' });
+});
+
+app.get('/admin/sellers-status', (req, res) => {
+  const sellersWithStatus = Object.entries(sellers).map(([email, details]) => ({
+    email,
+    name: details.name,
+    status: details.isApproved
+      ? 'Approved'
+      : details.isRejected
+        ? 'Rejected'
+        : 'Pending',
+  }));
+  return res.status(200).json({ sellers: sellersWithStatus });
+});
+
+
+// 5. Admin: View All Products
 app.get('/api/products', (req, res) => {
   return res.status(200).json(products); // Return all products
 });
