@@ -11,6 +11,7 @@ import { NgIf } from '@angular/common';
     ReactiveFormsModule,
     NgIf
   ],
+  standalone: true,
   styleUrls: ['./seller-signup.component.css']
 })
 export class SellerSignupComponent {
@@ -30,6 +31,7 @@ export class SellerSignupComponent {
       validators: this.passwordMatchValidator
     });
   }
+
   passwordMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
@@ -38,20 +40,23 @@ export class SellerSignupComponent {
 
   onSignup() {
     if (this.signupForm.valid) {
-      const {name, email, password} = this.signupForm.value;
+      const { name, email, password } = this.signupForm.value;
 
-      try {
-        const response = this.authService.signup({name, email, password});
-        alert(response.message);
-
-        this.router.navigate(['/seller/login']).then(() => {
+      // Call the signup method from AuthService
+      this.authService.signup({ name, email, password })
+        .then(response => {
+          console.log('Signup response:', response);  // Log response from the server
+          alert(response.message);  // Show success message
+          this.router.navigate(['/home']).then(() => {
+            console.log('Navigated to login');  // Log success when navigation is successful
+          });
+        })
+        .catch(error => {
+          console.error('Signup error:', error);  // Log signup errors
+          alert(error.error?.message || 'Signup failed. Please try again later.');  // Display error message
         });
-      } catch (error: any) {
-        console.error('Signup error:', error);
-        alert(error?.message || 'Signup failed. Please try again later.');
-      }
     } else {
-      alert('Please fill out the form correctly.');
+      alert('Please fill out the form correctly.');  // Alert if form is invalid
     }
   }
 }
