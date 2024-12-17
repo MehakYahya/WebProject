@@ -1,12 +1,12 @@
 import {RouterModule, Routes} from '@angular/router';
 import { SellerSignupComponent } from './seller-signup/seller-signup.component';
 import { SellerLoginComponent } from './seller-login/seller-login.component';
-import { HomeComponent } from './home/home.component';
 import {NgModule} from '@angular/core';
 import {AuthGuard} from './auth.guard';
 import { AddProductComponent } from './add-product/add-product.component';
 import {ViewProductComponent} from './view-product/view-product.component';
 import {OrderManagementComponent} from "./order-management/order-management.component";
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
   { path: 'seller/signup', component: SellerSignupComponent },
