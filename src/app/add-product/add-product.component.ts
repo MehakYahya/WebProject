@@ -1,35 +1,38 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgIf} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { ProductService } from '../product.service';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-add-product',
-  imports: [ReactiveFormsModule,  NgIf],
   templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.css'
+  styleUrls: ['./add-product.component.css'],
+  imports: [
+    NgIf,
+    ReactiveFormsModule
+  ]
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
   productForm: FormGroup;
-  products: { name: string; price: number; image: string;description: string; quantity: number}[] = []; // Array to store products
   imagePreview: string | null = null;
-
 
   constructor(private fb: FormBuilder, private productService: ProductService) {
     this.productForm = this.fb.group({
       name: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.pattern(/^\d+$/)]], // Only digits
       image: ['', [Validators.required]],
-      description: ['', [Validators.required, Validators.minLength(10)]] ,
-      quantity: [1, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]]
-
+      description: ['', [Validators.required, Validators.minLength(10)]],
+      quantity: [1, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]],
     });
+  }
+
+  ngOnInit(): void {
   }
 
   onImageSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
-      this.productForm.patchValue({ image: file });
+      this.productForm.patchValue({image: file});
       this.productForm.get('image')?.updateValueAndValidity();
 
       const reader = new FileReader();
@@ -42,18 +45,33 @@ export class AddProductComponent {
 
   onAddProduct() {
     if (this.productForm.valid) {
-      const { name, price,description,quantity } = this.productForm.value;
+      const {name, price, description, quantity} = this.productForm.value;
       const image = this.imagePreview || '';
 
-      // Use the service to add the product
-      this.productService.addProduct({ name, price: parseFloat(price), image,description , quantity: parseInt(quantity, 10)});
-      alert('Product added successfully!');
+      const product = {
+        name,
+        price: parseFloat(price),
+        description,
+        quantity: parseInt(quantity, 10),
+        image,
+      };
 
-      // Reset the form after adding the product
-      this.productForm.reset();
-      this.imagePreview = null;
+      console.log('Adding product:', product);
+
+      this.productService.addProduct(product).subscribe({
+        next: () => {
+          alert('Product added successfully!');
+          this.productForm.reset();
+          this.imagePreview = null;
+        },
+        error: (error) => {
+          console.error('Error adding product:', error);
+          alert(error.error?.message || 'Error adding product, please try again.');
+        },
+      });
     } else {
       alert('Please fill out the form correctly.');
     }
   }
+
 }
