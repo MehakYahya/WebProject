@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
   ]
 })
 export class AdminDashboardComponent {

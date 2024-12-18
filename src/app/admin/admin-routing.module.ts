@@ -7,6 +7,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { ManageSellersComponent } from './components/manage-sellers/manage-sellers.component';
 import { ManageCustomersComponent } from './components/manage-customers/manage-customers.component';
 import { ViewProductComponent} from './components/view-product/view-product.component';
+import {OrderManagementComponent} from './components/order-management/order-management.component';
+
 // Services
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 
@@ -20,10 +22,11 @@ const routes: Routes = [
       { path: 'manage-sellers', component: ManageSellersComponent },
       { path: 'manage-customers', component: ManageCustomersComponent },
       { path: 'view-products', component: ViewProductComponent }, // Route for products
+      { path: 'order-management', component: OrderManagementComponent },
       { path: '', redirectTo: 'manage-sellers', pathMatch: 'full' }, // Default child route
     ],
   },
-  { path: '', redirectTo: '/admin/login', pathMatch: 'full' }, // Default route to login
+  { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/admin/login' }, // Catch-all route for invalid paths
 ];
 

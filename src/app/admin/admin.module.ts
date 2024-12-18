@@ -11,12 +11,15 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { ManageSellersComponent } from './components/manage-sellers/manage-sellers.component';
 import { ManageCustomersComponent } from './components/manage-customers/manage-customers.component';
 import { ViewProductComponent} from './components/view-product/view-product.component';
+import {OrderManagementComponent} from './components/order-management/order-management.component';
+
 // Services
 import { AuthService } from './services/auth.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { SellerService } from './services/seller.service';
 import { CustomerService } from './services/customer.service';
 import { ProductService } from './services/product.service';
+import {OrderService} from './services/order.service';
 
 @NgModule({
 
@@ -29,6 +32,7 @@ import { ProductService } from './services/product.service';
     AdminDashboardComponent,
     ManageSellersComponent,
     ManageCustomersComponent,
+    OrderManagementComponent,
   ],
   providers: [
     provideHttpClient(),
@@ -37,6 +41,7 @@ import { ProductService } from './services/product.service';
     SellerService,
     CustomerService,
     ProductService,
+    OrderService,
   ],
 })
 export class AdminModule {}
