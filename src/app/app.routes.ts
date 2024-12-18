@@ -8,7 +8,7 @@ import { PaymentSuccessComponent } from './Page/payment-success/payment-success.
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegistrationComponent },
+  { path: 'register', component: RegistrationComponent }, // Include registration if required
   { path: 'view-products', component: ViewProductComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },

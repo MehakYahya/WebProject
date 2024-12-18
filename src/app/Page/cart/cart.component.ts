@@ -1,56 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgForOf, NgIf } from '@angular/common';
-
-interface Product {
-  name: string;
-  price: number;
-  image: string;
-  description: string;
-  quantity: number;
-}
+import { Component } from '@angular/core';
+import {Router, RouterLink} from '@angular/router';
+import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-cart',
+  standalone: true,
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css'],
   imports: [
+    RouterLink,
     NgForOf,
     NgIf
   ]
 })
-export class CartComponent implements OnInit {
-  cartItems: Product[] = [];
+export class CartComponent {
+  cartItems: any[] = [];
 
-  constructor(private router: Router) {}
-
-  getTotalAmount(): number {
-    return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  constructor(private router: Router) {
+    this.loadCart();
   }
 
-  ngOnInit(): void {
-    // Retrieve cart items from localStorage when the component initializes
-    const savedCart = localStorage.getItem('cart');
-    this.cartItems = savedCart ? JSON.parse(savedCart) : [];
+  loadCart() {
+    const cart = localStorage.getItem('cart');
+    this.cartItems = cart ? JSON.parse(cart) : [];
   }
-  removeFromCart(index: number) {
-    // Remove item from the cart array
+
+  getTotalPrice(): number {
+    return this.cartItems.reduce((total, item) => total + item.price * item.selectedQuantity, 0);
+  }
+
+  removeItem(index: number) {
     this.cartItems.splice(index, 1);
-
-    // Update the cart in localStorage
-    localStorage.setItem('cart', JSON.stringify(this.cartItems));
-
-    alert('Item removed from cart.');
-  }
-  continueShopping() {
-    this.router.navigate(['/products']).then(() => {
-      console.log('Navigated to view-product');
-    });
+    localStorage.setItem('cart', JSON.stringify(this.cartItems)); // Update localStorage
+    this.loadCart(); // Refresh the cart
   }
 
-  proceedToPay() {
-    this.router.navigate(['/checkout']).then(() => {
-      console.log('Navigated to payment page');
-    });
+  proceedToCheckout() {
+    this.router.navigate(['/checkout']);
   }
 }

@@ -19,7 +19,7 @@ export class LoginComponent {
     if (this.userService.login(this.name, this.password)) {
       alert('Login successful!');
       try {
-        await this.router.navigate(['/view-product']); // Handle navigation Promise
+        await this.router.navigate(['/view-products']); // Handle navigation Promise
       } catch (error) {
         console.error('Navigation failed:', error);
       }

@@ -7,14 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment-success.component.css']
 })
 export class PaymentSuccessComponent {
+  message: string = 'Your payment was successful! Thank you for your purchase.';
 
   constructor(private router: Router) {}
 
-  message: string = 'Your payment was successful! Thank you for your purchase.';
-
   goBack() {
-    this.router.navigate(['/products']).then(() => {
-      console.log('Navigated to login');  // Log success when navigation is successful
+    this.router.navigate(['/view-products']).then(() => {
+      console.log('Navigated to View Products'); // Log success when navigation is successful
     });
   }
 }
