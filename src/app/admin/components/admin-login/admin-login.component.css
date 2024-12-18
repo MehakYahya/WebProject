@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f6f9;
+  background-color: #ECEBDE; /* Neutral Light */
   color: #333;
   line-height: 1.6;
 }
@@ -17,7 +17,7 @@ body {
   max-width: 400px;
   margin: 80px auto;
   padding: 30px;
-  background-color: #ffffff;
+  background-color: #D7D3BF; /* Tertiary Background */
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   text-align: center;
@@ -27,7 +27,7 @@ body {
 .admin-login h2 {
   margin-bottom: 20px;
   font-size: 2em;
-  color: #2c3e50;
+  color: #A59D84; /* Primary Color */
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -54,16 +54,16 @@ body {
   width: 100%;
   padding: 10px 12px;
   font-size: 1em;
-  border: 2px solid #dcdde1;
+  border: 2px solid #C1BAA1; /* Secondary Border */
   border-radius: 6px;
-  background-color: #f8f9fa;
+  background-color: #ECEBDE; /* Light Background */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .admin-login input:focus {
   outline: none;
-  border-color: #1abc9c;
-  box-shadow: 0 0 8px rgba(26, 188, 156, 0.3);
+  border-color: #A59D84; /* Primary Focus */
+  box-shadow: 0 0 8px rgba(165, 157, 132, 0.3);
 }
 
 /* Submit Button */
@@ -72,7 +72,7 @@ body {
   font-size: 1.2em;
   font-weight: 600;
   color: #ffffff;
-  background-color: #1abc9c;
+  background-color: #A59D84; /* Primary Button */
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -80,12 +80,12 @@ body {
 }
 
 .admin-login button:hover {
-  background-color: #16a085;
+  background-color: #C1BAA1; /* Secondary Hover */
   transform: translateY(-3px);
 }
 
 .admin-login button:disabled {
-  background-color: #bdc3c7;
+  background-color: #D7D3BF; /* Disabled State */
   cursor: not-allowed;
 }
 

@@ -9,8 +9,9 @@
 /* Title Styling */
 h2 {
   text-align: center;
-  color: #4CAF50; /* Green color */
+  color: #A59D84; /* Primary Color */
   margin-bottom: 15px;
+  font-weight: bold;
 }
 
 /* Filter Buttons */
@@ -20,18 +21,19 @@ h2 {
 }
 
 .filters button {
-  background-color: #4CAF50; /* Green button */
+  background-color: #A59D84; /* Primary Button Color */
   color: white;
   border: none;
   padding: 8px 12px;
   margin: 0 5px;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .filters button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #8C846F; /* Darker Primary on Hover */
+  transform: translateY(-2px);
 }
 
 /* Table Styling */
@@ -39,32 +41,33 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 15px;
-  background-color: #fafafa;
+  background-color: #ECEBDE; /* Neutral Light Background */
 }
 
 th, td {
   padding: 10px;
   text-align: center;
-  border: 1px solid #ddd; /* Light gray borders */
+  border: 1px solid #D7D3BF; /* Tertiary Border */
 }
 
 th {
-  background-color: #4CAF50;
+  background-color: #A59D84; /* Primary Header Background */
   color: white;
   text-transform: uppercase;
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9; /* Alternate row color */
+  background-color: #f9f9f9; /* Alternate Row Color */
 }
 
 tr:hover {
-  background-color: #f1f1f1; /* Row hover effect */
+  background-color: #C1BAA1; /* Secondary Row Hover Effect */
+  color: #fff; /* White text on hover */
 }
 
 /* Product List Styling */
 .no-bullets {
-  list-style-type: none; /* Remove bullets from product list */
+  list-style-type: none; /* Remove Bullets from Product List */
   padding: 0;
   margin: 0;
 }

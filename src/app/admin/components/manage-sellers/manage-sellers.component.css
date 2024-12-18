@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f6f9;
+  background-color: #ECEBDE; /* Neutral Light Background */
   color: #333;
   line-height: 1.6;
 }
@@ -24,7 +24,7 @@ body {
 }
 
 h2 {
-  color: #2c3e50;
+  color: #A59D84; /* Primary Color */
   margin-bottom: 25px;
   font-size: 1.8em;
   font-weight: 700;
@@ -45,7 +45,7 @@ h2 {
   align-items: center;
   background-color: #f9fbfc;
   padding: 15px 20px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #D7D3BF; /* Tertiary Border Color */
   border-radius: 8px;
   margin-bottom: 15px;
   transition: all 0.3s ease;
@@ -53,6 +53,8 @@ h2 {
 
 .list-group-item:hover {
   transform: translateY(-5px);
+  background-color: #C1BAA1; /* Secondary Hover Effect */
+  color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -82,36 +84,36 @@ h2 {
 
 /* Success Button */
 .btn-success {
-  background-color: #27ae60;
+  background-color: #A59D84; /* Primary Color */
   color: white;
   border: none;
 }
 
 .btn-success:hover {
-  background-color: #229954;
+  background-color: #8C846F;
   transform: translateY(-2px);
 }
 
 /* Danger Button */
 .btn-danger {
-  background-color: #e74c3c;
+  background-color: #C1BAA1; /* Secondary Color */
   color: white;
   border: none;
 }
 
 .btn-danger:hover {
-  background-color: #c0392b;
+  background-color: #A59D84;
   transform: translateY(-2px);
 }
 
 .btn:disabled {
-  background-color: #bdc3c7;
+  background-color: #D7D3BF; /* Tertiary Disabled Color */
   cursor: not-allowed;
 }
 
 /* No Sellers Message */
 .text-warning {
-  color: #f39c12;
+  color: #A59D84; /* Primary Color */
   font-weight: bold;
   font-size: 1.1em;
   text-align: center;
