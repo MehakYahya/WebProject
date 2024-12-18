@@ -3,8 +3,6 @@
 
   <div class="filters">
     <button (click)="filterOrders('All')">All</button>
-    <button (click)="filterOrders('Unpaid')">Unpaid</button>
-    <button (click)="filterOrders('To Ship')">To Ship</button>
     <button (click)="filterOrders('Shipped')">Shipped</button>
     <button (click)="filterOrders('Delivered')">Delivered</button>
   </div>
@@ -12,22 +10,41 @@
   <table>
     <thead>
     <tr>
-      <th>Order ID</th>
-      <th>Product</th>
-      <th>Total Amount</th>
+      <th>Customer Name</th>
+      <th>Customer Email</th>
+      <th>Products</th>
+      <th>Total Price</th>
       <th>Status</th>
       <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let order of orders">
-      <td>{{ order.id }}</td>
-      <td>{{ order.product }}</td>
-      <td>{{ order.totalAmount }}</td>
-      <td>{{ order.status }}</td>
+    <tr *ngFor="let order of filteredOrders">
+      <td>{{ order.name }}</td> <!-- Customer Name -->
+      <td>{{ order.email }}</td> <!-- Customer Email -->
+
+      <!-- Products and Quantities -->
       <td>
-        <button (click)="updateStatus(order.id, 'Shipped')">Ship</button>
-        <button (click)="updateStatus(order.id, 'Delivered')">Deliver</button>
+        <ul class="no-bullets">
+          <li *ngFor="let product of groupProducts(order)">
+            {{ product.name }} (x{{ product.quantity }})
+          </li>
+        </ul>
+      </td>
+
+      <td>{{ calculateTotalPrice(order) | currency:'PKR' }}</td> <!-- Total Price -->
+
+      <td>{{ order.status }}</td>
+
+      <td>
+        <div class="action-buttons">
+          <button #deliverButton (click)="updateStatus(order, 'Delivered', deliverButton, [deliverButton, shipButton])">
+            Deliver
+          </button>
+          <button #shipButton (click)="updateStatus(order, 'Shipped', shipButton, [deliverButton, shipButton])" [disabled]="order.status === 'Delivered'">
+            Ship
+          </button>
+        </div>
       </td>
     </tr>
     </tbody>
