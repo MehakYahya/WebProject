@@ -1,5 +1,4 @@
 <div class="add-product-container">
-  <h1>Welcome to the Seller Dashboard</h1>
 
   <h2>Add a Product</h2>
   <form [formGroup]="productForm" (ngSubmit)="onAddProduct()">
@@ -39,7 +38,7 @@
     </div>
 
     <!-- Image Preview Section -->
-    <div *ngIf="imagePreview">
+    <div *ngIf="imagePreview"  class="image-preview-container">
       <h3>Image Preview:</h3>
       <img [src]="imagePreview" alt="Product Image" class="product-image-preview" />
     </div>
