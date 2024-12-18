@@ -5,6 +5,7 @@ import {RouterOutlet} from '@angular/router';
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
+  standalone: true,
   imports: [
     RouterOutlet
   ]

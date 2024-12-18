@@ -32,7 +32,9 @@ export class AdminLoginComponent {
         this.loading = false;
         if (response && response.token) {
           localStorage.setItem('adminToken', response.token);
-          this.router.navigate(['/admin/dashboard']);
+          this.router.navigate(['/admin/dashboard']).then(() => {
+            console.log('Navigation successful.');
+          })
         } else {
           this.loginError = 'Invalid response from server.';
         }
