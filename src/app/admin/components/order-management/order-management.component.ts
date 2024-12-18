@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService} from '../../services/order.service';
-import {CurrencyPipe, NgForOf} from '@angular/common';
+import { OrderService } from '../../services/order.service';
+import { CurrencyPipe, NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-order-management',
@@ -10,8 +10,8 @@ import {CurrencyPipe, NgForOf} from '@angular/common';
   styleUrls: ['./order-management.component.css']
 })
 export class OrderManagementComponent implements OnInit {
-  orders: any[] = [];
-  filteredOrders: any[] = [];
+  orders: any[] = []; // All orders
+  filteredOrders: any[] = []; // Orders after filtering
 
   constructor(private orderService: OrderService) {}
 
@@ -22,38 +22,39 @@ export class OrderManagementComponent implements OnInit {
   loadOrders(): void {
     // Fetch orders from the backend
     this.orderService.getOrders().subscribe((orders) => {
-      // Update the orders array and filtered orders
       this.orders = orders;
-      this.filteredOrders = orders;
+      this.filteredOrders = orders; // Initialize filtered orders
     });
-
   }
+
+  // Filter orders by status
   filterOrders(status: string): void {
     if (status === 'All') {
-      this.filteredOrders = this.orders;  // Show all orders if 'All' is selected
+      this.filteredOrders = this.orders;
     } else {
-      this.filteredOrders = this.orders.filter(order => order.status === status);  // Filter by the selected status
+      this.filteredOrders = this.orders.filter(order => order.status === status);
     }
   }
 
+  // Calculate total price for an order
   calculateTotalPrice(order: any): number {
     return order.items.reduce((total: number, item: any) => {
       return total + (item.price * item.quantity);
     }, 0);
   }
 
+  // Group products with their quantities
   groupProducts(order: any): any[] {
     const groupedProducts: { name: string; quantity: number }[] = [];
 
     order.items.forEach((item: any) => {
       const existingProduct = groupedProducts.find(product => product.name === item.name);
       if (existingProduct) {
-        existingProduct.quantity += item.quantity; // Sum the quantities
+        existingProduct.quantity += item.quantity;
       } else {
         groupedProducts.push({ name: item.name, quantity: item.quantity });
       }
     });
     return groupedProducts;
   }
-
-  }
+}

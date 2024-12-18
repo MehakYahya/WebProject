@@ -1,11 +1,14 @@
 <div class="order-management">
   <h2>Order Management</h2>
 
+  <!-- Filters Section -->
   <div class="filters">
     <button (click)="filterOrders('All')">All</button>
-
+    <button (click)="filterOrders('Shipped')">Shipped</button>
+    <button (click)="filterOrders('Delivered')">Delivered</button>
   </div>
 
+  <!-- Orders Table -->
   <table>
     <thead>
     <tr>
@@ -14,13 +17,12 @@
       <th>Products</th>
       <th>Total Price</th>
       <th>Status</th>
-      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let order of filteredOrders">
-      <td>{{ order.name }}</td> <!-- Customer Name -->
-      <td>{{ order.email }}</td> <!-- Customer Email -->
+      <td>{{ order.name }}</td>
+      <td>{{ order.email }}</td>
 
       <!-- Products and Quantities -->
       <td>
@@ -31,8 +33,11 @@
         </ul>
       </td>
 
-      <td>{{ calculateTotalPrice(order) | currency:'PKR' }}</td> <!-- Total Price -->
+      <!-- Total Price -->
+      <td>{{ calculateTotalPrice(order) | currency:'PKR' }}</td>
 
+      <!-- Status Display -->
+      <td>{{ order.status }}</td>
     </tr>
     </tbody>
   </table>

@@ -1,0 +1,90 @@
+/* Container Styling */
+.order-management {
+  width: 90%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Title Styling */
+h2 {
+  text-align: center;
+  color: #4CAF50; /* Green color */
+  margin-bottom: 15px;
+}
+
+/* Filter Buttons */
+.filters {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.filters button {
+  background-color: #4CAF50; /* Green button */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.filters button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background-color: #fafafa;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd; /* Light gray borders */
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Alternate row color */
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Row hover effect */
+}
+
+/* Product List Styling */
+.no-bullets {
+  list-style-type: none; /* Remove bullets from product list */
+  padding: 0;
+  margin: 0;
+}
+
+.no-bullets li {
+  text-align: left;
+}
+
+/* Responsive Table Design */
+@media screen and (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  .filters button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
