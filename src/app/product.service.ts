@@ -25,10 +25,11 @@ export class ProductService {
     );
   }
 
-  // Add product (only Seller can add)
+
   addProduct(product: { name: string; price: number; image: string; description: string; quantity: number }) {
     return this.http.post<any>(`${this.apiUrl}/api/products`, product).pipe(
       tap((newProduct) => {
+
         // Update the local products list with the newly added product
         const currentProducts = this.productsSource.value;
         this.productsSource.next([...currentProducts, newProduct]);
