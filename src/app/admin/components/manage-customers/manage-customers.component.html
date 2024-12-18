@@ -1,6 +1,24 @@
 <h2>Manage Customers</h2>
-<ul>
-  <li *ngFor="let customer of customers">
-    {{ customer.name }} - {{ customer.email }}
-  </li>
-</ul>
+
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Address</th>
+    <th>Signup Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let customer of customers">
+    <td>{{ customer.name }}</td>
+    <td>{{ customer.email }}</td>
+    <td>{{ customer.phone }}</td>
+    <td>{{ customer.address }}</td>
+    <td>{{ customer.createdAt | date: 'short' }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<p *ngIf="!customers.length">No customers to display.</p>

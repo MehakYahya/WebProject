@@ -1,51 +1,57 @@
+/* Container styling */
 h2 {
-  font-size: 1.8em;
-  margin-bottom: 20px;
-  color: #333;
   text-align: center;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin-bottom: 15px;
+}
+
+/* Table styling */
+table {
+  width: 80%;
+  margin: 0 auto; /* Center the table horizontally */
+  border-collapse: collapse;
+  background-color: #fafafa; /* Light background for better readability */
   font-family: Arial, sans-serif;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 600px;
-  font-family: Arial, sans-serif;
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd; /* Light grey border */
 }
 
-ul li {
-  padding: 15px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  font-size: 1em;
+th {
+  background-color: #4CAF50; /* Green header background */
+  color: white;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Alternate row coloring */
+}
+
+tr:hover {
+  background-color: #ddd; /* Light grey hover effect */
+}
+
+/* No data message */
+p {
+  text-align: center;
   color: #555;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  font-style: italic;
+  margin-top: 20px;
 }
 
-ul li:hover {
-  background-color: #007bff;
-  color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-ul li:nth-child(odd) {
-  background-color: #f4f4f4;
-}
-
-ul li:nth-child(odd):hover {
-  background-color: #0056b3;
-}
-
-@media (max-width: 768px) {
-  ul {
-    padding: 0 10px;
+/* Responsive table */
+@media screen and (max-width: 768px) {
+  table {
+    width: 100%;
+    font-size: 12px;
   }
 
-  ul li {
-    font-size: 0.9em;
-    padding: 10px;
+  th, td {
+    padding: 5px;
   }
 }
+
