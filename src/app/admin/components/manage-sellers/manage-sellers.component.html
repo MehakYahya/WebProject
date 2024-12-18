@@ -1,29 +1,45 @@
-<h2>Manage Sellers</h2>
-<ul>
-  <li *ngFor="let seller of sellers">
-    <span>
-      {{ seller.name }} ({{ seller.email }})
-      <span style="font-weight: bold; margin-left: 10px;">
-        -
-        <span [ngStyle]="{ color: getStatusColor(seller.status) }">
-          {{ seller.status }}
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Manage Sellers</h2>
+
+  <ul class="list-group">
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+      *ngFor="let seller of sellers"
+    >
+      <span>
+        {{ seller.name }} ({{ seller.email }})
+        <span
+          [ngStyle]="{ color: getStatusColor(seller.status) }"
+          style="font-weight: bold; margin-left: 10px"
+        >
+          - {{ seller.status }}
         </span>
       </span>
-    </span>
 
-    <button
-      (click)="approveSeller(seller.email)"
-      [disabled]="seller.status === 'Approved' || seller.status === 'Rejected'"
-    >
-      Approve
-    </button>
+      <div>
+        <!-- Approve Button -->
+        <button
+          class="btn btn-success btn-sm me-2"
+          (click)="approveSeller(seller.email)"
+          [disabled]="seller.status === 'Approved' || seller.status === 'Rejected'"
+        >
+          Approve
+        </button>
 
-    <button
-      (click)="rejectSeller(seller.email)"
-      style="color: #ff7979;"
-      [disabled]="seller.status === 'Approved' || seller.status === 'Rejected'"
-    >
-      Reject
-    </button>
-  </li>
-</ul>
+        <!-- Reject Button -->
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="rejectSeller(seller.email)"
+          [disabled]="seller.status === 'Approved' || seller.status === 'Rejected'"
+        >
+          Reject
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Message when no sellers are available -->
+  <div *ngIf="sellers.length === 0" class="text-center text-warning mt-4">
+    No sellers are available at the moment!
+  </div>
+</div>

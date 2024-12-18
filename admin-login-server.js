@@ -73,6 +73,7 @@ app.post('/admin/approve-seller', (req, res) => {
 });
 
 // 4. Admin: Reject Seller
+// 4. Admin: Reject Seller
 app.post('/admin/reject-seller', (req, res) => {
   const { email } = req.body;
 
@@ -81,21 +82,27 @@ app.post('/admin/reject-seller', (req, res) => {
     return res.status(404).json({ message: 'Seller not found.' });
   }
 
-  // Remove seller from the list
-  delete sellers[email];
+  if (seller.isRejected) {
+    return res.status(400).json({ message: 'Seller is already rejected.' });
+  }
+
+  seller.isRejected = true; // Add rejected status
+  seller.isApproved = false; // Ensure isApproved is false
   return res.status(200).json({ message: 'Seller rejected successfully.' });
 });
 
+// Admin: Get Sellers with Status
 app.get('/admin/sellers-status', (req, res) => {
   const sellersWithStatus = Object.entries(sellers).map(([email, details]) => ({
     email,
     name: details.name,
-    status: details.isApproved
-      ? 'Approved'
-      : details.isRejected
-        ? 'Rejected'
-        : 'Pending',
+    status: details.isRejected
+      ? 'Rejected'
+      : details.isApproved
+        ? 'Approved'
+        : 'Pending', // Determine status
   }));
+
   return res.status(200).json({ sellers: sellersWithStatus });
 });
 

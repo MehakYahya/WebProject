@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// Extended Seller Interface for statuses
 interface Seller {
   email: string;
   name: string;
@@ -24,10 +23,12 @@ export class SellerService {
     return this.http.get<{ sellers: Seller[] }>(this.sellersStatusUrl);
   }
 
+  // Approve a seller
   approveSeller(email: string): Observable<void> {
     return this.http.post<void>(this.approveSellerUrl, { email });
   }
 
+  // Reject a seller
   rejectSeller(email: string): Observable<void> {
     return this.http.post<void>(this.rejectSellerUrl, { email });
   }
