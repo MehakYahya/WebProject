@@ -6,18 +6,17 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
-  private productsSource = new BehaviorSubject<any[]>([]); // Local state for products
-  private apiUrl = 'http://localhost:3000/api/products'; // Backend API URL for products
+  private productsSource = new BehaviorSubject<any[]>([]); // BehaviorSubject for state management
+  private apiUrl = 'http://localhost:3000/api/products'; // Backend endpoint
 
-  products$: Observable<any[]> = this.productsSource.asObservable(); // Observable for products
+  products$: Observable<any[]> = this.productsSource.asObservable();
 
   constructor(private http: HttpClient) {}
 
-  // Fetch all products from the backend
   fetchProducts(): void {
     this.http.get<any[]>(this.apiUrl).subscribe(
       (products) => {
-        this.productsSource.next(products); // Update the product state
+        this.productsSource.next(products); // Update local state
       },
       (error) => {
         console.error('Error fetching products:', error);

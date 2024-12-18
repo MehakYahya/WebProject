@@ -6,8 +6,7 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ManageSellersComponent } from './components/manage-sellers/manage-sellers.component';
 import { ManageCustomersComponent } from './components/manage-customers/manage-customers.component';
-import { ViewProductComponent } from './components/view-product/view-product.component';
-
+import { ViewProductComponent} from './components/view-product/view-product.component';
 // Services
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 

@@ -1,14 +1,11 @@
-.product-card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.container {
+  max-width: 1000px;
 }
 
-.product-image {
-  max-width: 100%;
-  height: auto;
-  margin-top: 10px;
-  border: 1px solid #ddd;
+.table {
+  margin: auto;
+}
+
+.img-thumbnail {
+  object-fit: cover;
 }
