@@ -1,11 +1,134 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container Styling */
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 25px 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
+h2 {
+  color: #2c3e50;
+  font-size: 1.8em;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+/* Table Styling */
 .table {
-  margin: auto;
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
+.table th,
+.table td {
+  padding: 15px 10px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table thead th {
+  background-color: #1abc9c;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.table tbody tr {
+  transition: all 0.3s ease-in-out;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f8f6;
+  transform: scale(1.01);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Thumbnail */
 .img-thumbnail {
+  border-radius: 8px;
   object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.img-thumbnail:hover {
+  transform: scale(1.1);
+}
+
+/* No Products Message */
+.text-danger {
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .table th,
+  .table td {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  .img-thumbnail {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+  }
+
+  .img-thumbnail {
+    width: 50px;
+    height: 50px;
+  }
 }

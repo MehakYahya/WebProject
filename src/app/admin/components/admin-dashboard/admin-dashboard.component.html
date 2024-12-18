@@ -1,10 +1,17 @@
 <div class="dashboard">
-  <h1>Welcome, Admin</h1>
-  <ul>
-    <li><a routerLink="manage-sellers">Manage Sellers</a></li>
-    <li><a routerLink="manage-customers">Manage Customers</a></li>
-    <li><a routerLink="view-products">View Products</a></li>
-  </ul>
-</div>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <h1>Welcome, Admin</h1>
+    <nav>
+      <a routerLink="manage-sellers">Manage Sellers</a>
+      <a routerLink="manage-customers">Manage Customers</a>
+      <a routerLink="view-products">View Products</a>
+    </nav>
+    <button (click)="onLogout()" class="logout-button">Logout</button>
+  </div>
 
-<router-outlet></router-outlet>
+  <!-- Content Section -->
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

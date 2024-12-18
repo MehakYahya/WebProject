@@ -13,4 +13,8 @@ export class AuthService {
   loginAdmin(email: string, password: string): Observable<any> {
     return this.http.post(`${this.apiBase}/admin-login`, { email, password });
   }
+
+  logoutAdmin(): void {
+    localStorage.removeItem('adminToken');
+  }
 }

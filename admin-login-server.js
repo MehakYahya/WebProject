@@ -123,9 +123,8 @@ app.post('/seller/signup', (req, res) => {
     return res.status(400).json({ message: 'Seller already exists.' });
   }
 
-  // Store with hashed password
-  const hashedPassword = bcrypt.hashSync(password, 10);
-  sellers[email] = { name, password: hashedPassword, isApproved: false };
+  // Add seller with pending approval
+  sellers[email] = { name, password, isApproved: false };
   return res.status(201).json({ message: 'Signup successful. Awaiting admin approval.' });
 });
 
@@ -142,32 +141,28 @@ app.post('/seller/login', (req, res) => {
     return res.status(403).json({ message: 'Account not approved by admin yet.' });
   }
 
-  bcrypt.compare(password, seller.password, (err, result) => {
-    if (err || !result) {
-      return res.status(401).json({ message: 'Invalid credentials.' });
-    }
-
-    // Generate JWT Token
-    const token = generateToken({ email, role: 'seller' });
-    return res.status(200).json({ message: 'Login successful.', token });
-  });
+  if (seller.password === password) {
+    return res.status(200).json({ message: 'Login successful.', role: 'seller' });
+  } else {
+    return res.status(401).json({ message: 'Invalid credentials.' });
+  }
 });
 
 /* ----------------------- PRODUCT ENDPOINTS ----------------------- */
 
 // 1. Seller: Add Product
 app.post('/api/products', (req, res) => {
+  console.log('Request body:', req.body);
   const { name, price, description, quantity, image } = req.body;
 
   if (!name || !price || !description || !quantity || !image) {
-    return res.status(400).json({ message: 'Missing required fields.' });
+    return res.status(400).json({ message: 'Missing required fields' });
   }
 
   const newProduct = { name, price, description, quantity, image };
   products.push(newProduct);
-  res.status(201).json({ message: 'Product added successfully.', newProduct });
+  res.status(201).json(newProduct);
 });
-
 /* ----------------------- SERVER START ----------------------- */
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
