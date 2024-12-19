@@ -4,14 +4,14 @@ form {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #ECEBDE; /* Lightest color for the form background */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   text-align: center;
-  color: #333;
+  color: #A59D84; /* Primary color for headings */
 }
 
 .form-group {
@@ -20,7 +20,7 @@ h1 {
 
 label {
   font-weight: bold;
-  color: #333;
+  color: #A59D84; /* Primary label color */
   display: block;
   margin-bottom: 8px;
 }
@@ -30,45 +30,48 @@ input[type="email"] {
   width: 100%;
   padding: 10px;
   font-size: 14px;
-  border: 1px solid #ddd;
+  border: 1px solid #C1BAA1; /* Softer border color */
   border-radius: 4px;
+  background-color: #ECEBDE; /* Form field background */
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus {
-  border-color: #4CAF50;
+  border-color: #A59D84; /* Highlight color */
   outline: none;
+  box-shadow: 0 0 5px rgba(165, 157, 132, 0.5);
 }
 
 button {
   width: 100%;
   padding: 12px;
-  background-color: #4CAF50;
+  background-color: #A59D84; /* Primary button color */
   color: white;
   border: none;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 15px;
+  transition: background-color 0.3s ease;
 }
 
 button:disabled {
-  background-color: #ccc;
+  background-color: #C1BAA1; /* Disabled state color */
   cursor: not-allowed;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #8C8673; /* Darker on hover */
 }
 
 /* Back to Cart Button */
 button[type="button"] {
-  background-color: #f44336;
-  margin-top: 10px;
+  background-color: #D7D3BF; /* Secondary button color */
+  color: #333;
 }
 
 button[type="button"]:hover {
-  background-color: #d32f2f;
+  background-color: #C1BAA1; /* Slightly darker on hover */
 }
 
 /* Total Amount Display */
@@ -76,6 +79,11 @@ button[type="button"]:hover {
   margin-top: 20px;
   font-size: 18px;
   font-weight: bold;
-  color: #333;
+  color: #A59D84; /* Primary color for total amount */
   text-align: center;
+}
+
+/* General Page Background */
+body {
+  background-color: #ECEBDE; /* Lightest background color for the page */
 }

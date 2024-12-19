@@ -4,17 +4,30 @@
   <!-- Cart Items -->
   <div *ngIf="cartItems.length > 0; else emptyCart">
     <div *ngFor="let item of cartItems; let i = index" class="border p-3 mb-3">
-      <h3>{{ item.name }}</h3>
-      <p><strong>Description:</strong> {{ item.description }}</p>
-      <p><strong>Price:</strong> Rs {{ item.price }}</p>
-      <p><strong>Quantity:</strong> {{ item.selectedQuantity }}</p>
-      <p><strong>Subtotal:</strong> Rs {{ item.price * item.selectedQuantity }}</p>
-      <button class="btn btn-danger" (click)="removeItem(i)">Remove</button>
-    </div>
-    <h4>Total: Rs {{ getTotalPrice() }}</h4>
-    <button class="btn btn-success" (click)="proceedToCheckout()">Proceed to Checkout</button>
-  </div>
+      <div class="row">
+        <!-- Product Image -->
+        <div class="col-md-3 text-center">
+          <img
+            [src]="item.image"
+            alt="{{ item.name }}"
+            class="img-thumbnail"
 
+          />
+        </div>
+        <div class="col-md-9">
+
+          <h3>{{ item.name }}</h3>
+          <p><strong>Description:</strong> {{ item.description }}</p>
+          <p><strong>Price:</strong> Rs {{ item.price }}</p>
+          <p><strong>Quantity:</strong> {{ item.selectedQuantity }}</p>
+          <p><strong>Subtotal:</strong> Rs {{ item.price * item.selectedQuantity }}</p>
+          <button class="btn btn-danger" (click)="removeItem(i)">Remove</button>
+        </div>
+        <h4>Total: Rs {{ getTotalPrice() }}</h4>
+        <button class="btn btn-success" (click)="proceedToCheckout()">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
   <!-- Empty Cart Message -->
   <ng-template #emptyCart>
     <p>Your cart is empty!</p>

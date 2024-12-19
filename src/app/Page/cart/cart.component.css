@@ -5,9 +5,9 @@
   justify-content: space-between;
   margin-bottom: 20px;
   padding: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #C1BAA1;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: #ECEBDE; /* Lightest color for the background */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -18,7 +18,7 @@
   object-fit: cover;
   margin-right: 15px;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #C1BAA1;
 }
 
 /* Product Details */
@@ -36,7 +36,7 @@
 
 /* Remove Button */
 button {
-  background-color: #ff4d4d;
+  background-color: #A59D84; /* Primary button color */
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -47,22 +47,22 @@ button {
 }
 
 button:hover {
-  background-color: #e04343;
+  background-color: #8C8673; /* Slightly darker on hover */
 }
 
 /* Continue Shopping and Proceed to Pay Buttons */
 button:last-child {
-  background-color: #4caf50;
+  background-color: #C1BAA1; /* Secondary button color */
 }
 
 button:last-child:hover {
-  background-color: #43a047;
+  background-color: #A59D84; /* Darker on hover */
 }
 
 /* Empty Cart Message */
 ng-template p {
   font-size: 1rem;
-  color: #999;
+  color: #A59D84; /* Match scheme */
   text-align: center;
 }
 
@@ -71,11 +71,17 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 1.8rem;
-  color: #444;
+  color: #555;
 }
 
 hr {
   margin: 20px 0;
   border: none;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #D7D3BF; /* Softer color for separator */
+}
+
+/* Cart Item Shadow on Hover */
+.cart-item:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  background-color: #D7D3BF; /* Slight background highlight */
 }

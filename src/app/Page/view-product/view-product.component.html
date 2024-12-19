@@ -1,26 +1,38 @@
 <div class="container mt-4">
   <h1>View Products</h1>
   <div *ngFor="let product of products" class="border p-3 mb-3">
-    <h3>{{ product.name }}</h3>
-    <p>{{ product.description }}</p>
-    <p><strong>Price:</strong> Rs {{ product.price }}</p>
-    <p><strong>Available Quantity:</strong> {{ product.quantity }}</p>
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <img
+          [src]="product.image"
+          alt="{{ product.name }}"
+          class="img-thumbnail"
 
-    <!-- Quantity Input -->
-    <label for="quantity-{{ product.name }}">Quantity:</label>
-    <input
-      type="number"
-      id="quantity-{{ product.name }}"
-      [(ngModel)]="product.selectedQuantity"
-      min="1"
-      [max]="product.quantity"
-      class="form-control mb-2"
-    />
+        />
+      </div>
+      <div class="col-md-9">
 
-    <!-- Add to Cart Button -->
-    <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p><strong>Price:</strong> Rs {{ product.price }}</p>
+        <p><strong>Available Quantity:</strong> {{ product.quantity }}</p>
+
+        <!-- Quantity Input -->
+        <label for="quantity-{{ product.name }}">Quantity:</label>
+        <input
+          type="number"
+          id="quantity-{{ product.name }}"
+          [(ngModel)]="product.selectedQuantity"
+          min="1"
+          [max]="product.quantity"
+          class="form-control mb-2"
+        />
+
+        <!-- Add to Cart Button -->
+        <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+      </div>
+    </div>
   </div>
-
   <!-- View Cart Button -->
   <button class="btn btn-success" (click)="viewCart()">View Cart</button>
 </div>
