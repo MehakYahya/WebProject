@@ -7,7 +7,7 @@
       *ngFor="let seller of sellers"
     >
       <span>
-        {{ seller.name }} ({{ seller.email }})
+        {{ seller.name }} ( {{ seller.email }} )
         <span
           [ngStyle]="{ color: getStatusColor(seller.status) }"
           style="font-weight: bold; margin-left: 10px"

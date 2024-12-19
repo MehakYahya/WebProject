@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-admin-login',
