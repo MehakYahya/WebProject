@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 
-import { AdminRoutingModule } from './admin-routing.module';
+import { AdminRoutes } from './admin.routes';
 
 // Components
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
@@ -26,7 +26,7 @@ import {OrderService} from './services/order.service';
   imports: [
     CommonModule,
     FormsModule,
-    AdminRoutingModule,
+    AdminRoutes,
     ViewProductComponent,
     AdminLoginComponent,
     AdminDashboardComponent,
@@ -44,4 +44,4 @@ import {OrderService} from './services/order.service';
     OrderService,
   ],
 })
-export class AdminModule {}
+export class AdminConfig {}
