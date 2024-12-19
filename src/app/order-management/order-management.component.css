@@ -1,130 +1,133 @@
-/* General container styling */
 .order-management {
-  max-width: 1200px;
+  font-family: Arial, sans-serif;
   margin: 20px auto;
   padding: 20px;
-  background-color: #f9f9f9;
+  max-width: 80%;
+  background-color: #D7D3BF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header Styling */
 .order-management h2 {
   text-align: center;
-  font-size: 24px;
+  color: #444444;
   margin-bottom: 20px;
-  color: #333;
+  font-size: 1.8rem;
 }
 
-/* Filter buttons */
 .filters {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+  text-align: center;
   margin-bottom: 20px;
 }
 
 .filters button {
-  padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #9c947a;
   color: white;
+  padding: 10px 20px;
+  margin: 5px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 150px;
 }
 
 .filters button:hover {
-  background-color: #099134;
+  background-color: #C1BAA1;
 }
 
-.filters button:focus {
-  outline: none;
-}
-
-/* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  background-color: #eae8e0;
+  border: 1px solid #C1BAA1;
+
+}
+
+thead {
+  background-color: #9c947a;
+  color: white;
+
 }
 
 th, td {
-  padding: 12px;
+  padding: 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
 th {
-  background-color: #007bff;
-  color: white;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
 }
 
-td {
-  background-color: #f9f9f9;
+td div.product-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-/* Button styles inside the table */
-button {
-  padding: 6px 12px;
+.product-details img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.no-bullets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+td button {
+  padding: 10px 20px;
+  font-size: 0.9rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 150px;
 }
 
-/* 'Ship' button */
-button:nth-child(1) {
+td button:first-child {
   background-color: #28a745;
   color: white;
+  margin-bottom: 3px;
 }
 
-button:nth-child(1):hover {
+td button:first-child:hover {
   background-color: #218838;
 }
 
-/* 'Deliver' button */
-button:nth-child(2) {
-  background-color: #ffc107;
-  color: white;
+td button:last-child {
+  background-color: #b1cda1;
+  color: black;
 }
 
-button:nth-child(2):hover {
-  background-color: #e0a800;
+td button:last-child:hover {
+  background-color:#b1cda1;
 }
 
-/* Add hover effect to table rows */
-tr:hover {
-  background-color: #f1f1f1;
-}
-
-/* Styling for empty table (if no orders are displayed) */
-table tbody tr.empty {
-  text-align: center;
-  color: #999;
-  font-style: italic;
-}
-
-/* For active link or buttons (if applicable) */
-a.active {
-  font-weight: bold;
-  color: #007bff;
-}
-
-/* Responsive design */
 @media (max-width: 768px) {
-  .filters {
-    flex-direction: column;
-    align-items: center;
+  .order-management {
+    padding: 10px;
+  }
+
+  table {
+    font-size: 0.9rem;
   }
 
   .filters button {
-    width: 100%;
-    margin-bottom: 10px;
+    padding: 8px 10px;
+    margin: 3px;
+    width: 120px;
   }
 
-  table th, table td {
-    font-size: 14px;
-    padding: 10px;
+  .product-details img {
+    width: 40px;
+    height: 40px;
   }
 }

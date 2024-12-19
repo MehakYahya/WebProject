@@ -1,19 +1,14 @@
-.login-container {
-  max-width: 400px; /* Set the maximum width of the form */
-  width: 550px; /* Ensures responsiveness for smaller screens */
-  margin-top: 20px ;
 
+
+.login-container  {
+  max-width: 400px;
+  width: 550px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #C1BAA1;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  background-color:  #D7D3BF;
   font-family: 'Arial', sans-serif;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
 }
 
 label {
@@ -23,84 +18,56 @@ label {
   font-weight: bold;
 }
 
-input[type="email"],
-input[type="password"] {
-  width: calc(100% - 10px); /* Adjusted width to account for padding or borders */
-  padding: 10px 5px; /* Adjusted padding for balanced spacing inside the input */
-  margin: 0 auto 15px; /* Centered input with equal left and right spacing */
-  border: 1px solid #ccc;
+input {
+  width: calc(100% - 10px);
+  padding: 10px 5px;
+  margin: 0 auto 15px;
+  border: 1px solid #D7D3BF;
   border-radius: 5px;
   font-size: 14px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+input:focus {
+  border-color: #A59D84;
+  box-shadow: 0 0 5px rgba(165, 157, 132, 0.3);
   outline: none;
 }
 
-div {
-  color: #e74c3c;
-  font-size: 14px;
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
-p{
-  color: #444;
-}
-small {
-  display: block;
-}
-
 button {
-  background-color: #3498db;
-  color: white;
+  width: 100%;
   padding: 12px;
+  background-color: #9c947a;
+  color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
-  cursor: pointer;
+
   transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 100%; /* Ensures button matches the form's width */
 }
-.log{
-  background-color: #0cbd48;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 50%;
-}
+
 button:disabled {
-  background-color: #6084a5;
+  background-color: #C1BAA1;
   cursor: not-allowed;
 }
 
-button:hover:enabled {
-  background-color: #2980b9;
+button:hover:not(:disabled) {
+  background-color: #C1BAA1;
   transform: scale(1.02);
 }
 
-.login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  background: linear-gradient(to right, #b6b6ec, #d1c4e9);
-  box-sizing: border-box;
+p {
+  color: #C15A12;
 }
 
-.login-container form {
-  width: 100%;
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover {
+  color: #0056b3;
 }
 
 /* Responsive Design */
@@ -113,8 +80,7 @@ button:hover:enabled {
     font-size: 14px;
   }
 
-  input[type="email"],
-  input[type="password"],
+  input,
   button {
     font-size: 14px;
   }

@@ -1,24 +1,21 @@
-/* General Styling */
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to right, #b6b6ec, #5a00ff);
+  background: linear-gradient(to right, #A59D84, #C1BAA1);
   color: #333;
 }
 
-/* Main Layout */
 .main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to right, #5a5ae4, #bf9dff);
+  background: linear-gradient(to right, #D7D3BF, #ECEBDE);
 }
 
-/* Header */
 header {
-  background-color: #021c3e;
+  background-color: #A59D84;
   color: white;
   padding: 15px 20px;
   display: flex;
@@ -38,17 +35,18 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #007bff;
+  color: #ECEBDE;
   margin: 0 15px;
   font-size: 18px;
 }
 
 nav a:hover {
-  color: #0056b3;
+  color: #ffffff;
 }
+
 nav .active {
   font-weight: bold;
-  color: #b3a318;
+  color: #ffffff;
 }
 
 button {
@@ -63,9 +61,8 @@ button {
 }
 
 button:hover {
-  background-color: #c9302c;
+  background-color: #C1BAA1;
 }
-
 
 main {
   flex: 1;
@@ -73,6 +70,5 @@ main {
   justify-content: center;
   align-items: center;
   padding: 20px;
+  background: #ECEBDE;
 }
-
-
