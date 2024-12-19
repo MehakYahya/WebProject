@@ -22,5 +22,6 @@ export class ViewProductComponent implements OnInit {
       this.products = products;
     });
   }
+
 }
 
